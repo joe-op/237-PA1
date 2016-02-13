@@ -18,12 +18,12 @@ int charToDigit(char);
 // convert a char between '0' and '9' to digit
 // return -1 if char is not valid
 
-char digitToChar(int);
+char digitToChar(int);//jens
 // convert an int between 0 and 9 to char
 
 vector<int> stringToVector(string);
 // convert a string of digits into a vector of integers
-// integers will be stored in reverse: <1s, 10s, 100s, ...> apple
+// integers will be stored in reverse: <1s, 10s, 100s, ...>
 
 vector<int> add(const vector<int> &first, const vector<int> &second);
 /* 
