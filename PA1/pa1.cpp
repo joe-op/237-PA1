@@ -48,6 +48,7 @@ int main(void) {
 	// TODO if strings are valid, add them
 
 	// TODO print equation
+	return 0;
 }
 
 // TODO define functions
