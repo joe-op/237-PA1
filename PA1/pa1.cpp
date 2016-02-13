@@ -25,6 +25,9 @@ vector<int> stringToVector(string);
 // convert a string of digits into a vector of integers
 // integers will be stored in reverse: <1s, 10s, 100s, ...> apple
 
+string vectorToString(const vector<int> &first);
+// convert vector to a string of its integer
+
 vector<int> add(const vector<int> &first, const vector<int> &second);
 /* 
  * add two vectors and return the result.
