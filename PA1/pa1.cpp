@@ -49,6 +49,7 @@ int main(void) {
 
 	// TODO print equation
 	return 0;
+
 }
 
 // TODO define functions
