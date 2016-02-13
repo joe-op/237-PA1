@@ -17,6 +17,7 @@ using namespace std;
 int charToDigit(char);
 // convert a char between '0' and '9' to digit
 // return -1 if char is not valid
+// JOE
 
 char digitToChar(int);
 // convert an int between 0 and 9 to char
