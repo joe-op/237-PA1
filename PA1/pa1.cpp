@@ -17,7 +17,7 @@ using namespace std;
 int charToDigit(char);
 // convert a char between '0' and '9' to digit
 // return -1 if char is not valid
-// JOE
+// done
 
 char digitToChar(int);//jens
 // convert an int between 0 and 9 to char
@@ -59,3 +59,12 @@ int main(void) {
 //add pause_237
 
 // TODO define functions
+
+int charToDigit(char c) {
+	int code = c;
+	if (code >= 48 && code <= 57) {
+		return code - 48;
+	} else {
+		return -1;
+	}
+}
