@@ -41,13 +41,25 @@ vector<int> add(const vector<int> &first, const vector<int> &second);
 bool verifyString(string);
 // verify that a string contains an unsigned integer
 
+void pause_237(bool);
+
 int main(void) {
-	string first, second;
+	string first_str, second_str;
 	vector<int> first, second, result;
 
-	// TODO get strings from user
+	cout << "Please enter two integers:" << endl;
+	cin >> first_str;
+	cin >> second_str;
 
-	// TODO verify strings
+	try {
+		first = stringToVector(first_str);
+		second = stringToVector(second_str);
+	}
+	catch (invalid_argument& ia) {
+		cout << "Invalid entries!" << endl;
+		pause_237(true);
+		exit(1);
+	}
 
 	// TODO if strings are valid, add them
 
@@ -55,8 +67,6 @@ int main(void) {
 	return 0;
 
 }
-
-//add pause_237
 
 // TODO define functions
 
@@ -81,4 +91,16 @@ vector<int> stringToVector(string str) {
 		}
 	}
 	return result;
+}
+
+void pause_237(bool have_newline)
+{
+	if (have_newline) {
+		// Ignore the newline after the user's previous input.
+		cin.ignore(200, '\n');
+	}
+
+	// Prompt for the user to press ENTER, then wait for a newline.
+	cout << endl << "Press ENTER to continue." << endl;
+	cin.ignore(200, '\n');
 }
