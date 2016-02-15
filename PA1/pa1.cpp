@@ -46,6 +46,7 @@ void pause_237(bool);
 
 int main(void) {
 	string first_str, second_str;
+	string first_display, second_display, result_display;
 	vector<int> first, second, result;
 
 	cout << "Please enter two integers:" << endl;
@@ -80,6 +81,16 @@ int charToDigit(char c) {
 	}
 }
 
+char digitToChar(int digit) {
+	if (digit >= 0 && digit <= 9) {
+		char c = digit + 48;
+		return c;
+	}
+	else {
+		throw invalid_argument("Cannot make char from non-digit integer");
+	}
+}
+
 vector<int> stringToVector(string str) {
 	vector<int> result;
 	for (int i = str.length() - 1; i >= 0; i--) {
@@ -96,8 +107,15 @@ vector<int> stringToVector(string str) {
 
 string vectorToString(const vector<int> &first) {
 	string result = "";
-	for (int i = first.size() - 1; i > 0; i--) {
-		result += digitToChar(first[i]);
+	for (int i = first.size() - 1; i >= 0; i--) {
+		try {
+			result += digitToChar(first[i]);
+		}
+		catch (invalid_argument &ia) {
+			cout << "Invalid argument: " << ia.what() << endl;
+			pause_237(true);
+			exit(1);
+		}
 	}
 	return result;
 }
