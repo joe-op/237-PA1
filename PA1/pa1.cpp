@@ -12,12 +12,12 @@
 #include <iostream>
 #include <cmath>
 #include <vector>
+#include <string>
 using namespace std;
 
 int charToDigit(char);
 // convert a char between '0' and '9' to digit
 // return -1 if char is not valid
-// done
 
 char digitToChar(int);//jens
 // convert an int between 0 and 9 to char
@@ -67,4 +67,18 @@ int charToDigit(char c) {
 	} else {
 		return -1;
 	}
+}
+
+vector<int> stringToVector(string str) {
+	vector<int> result;
+	for (int i = str.length() - 1; i >= 0; i--) {
+		int digit = charToDigit(str.at(i));
+		if (digit == -1) {
+			throw invalid_argument("NAN");
+		}
+		else {
+			result.push_back(digit);
+		}
+	}
+	return result;
 }
