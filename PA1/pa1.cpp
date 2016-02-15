@@ -94,6 +94,14 @@ vector<int> stringToVector(string str) {
 	return result;
 }
 
+string vectorToString(const vector<int> &first) {
+	string result = "";
+	for (int i = first.size() - 1; i > 0; i--) {
+		result += digitToChar(first[i]);
+	}
+	return result;
+}
+
 void pause_237(bool have_newline)
 {
 	if (have_newline) {
