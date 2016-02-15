@@ -38,8 +38,9 @@ vector<int> add(const vector<int> &first, const vector<int> &second);
  * etc. with ones carried to the next element
  */
 
-bool verifyString(string);
+// bool verifyString(string);
 // verify that a string contains an unsigned integer
+// 2-14 verified in stringToVector
 
 void pause_237(bool);
 
