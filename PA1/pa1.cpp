@@ -37,9 +37,9 @@ vector<int> add(const vector<int> &first, const vector<int> &second);
  * etc. with ones carried to the next element
  */
 
-// bool verifyString(string);
+bool verify_string(string);
 // verify that a string contains an unsigned integer
-// 2-14 verified in stringToVector
+// 2-16 still need
 
 void pause_237(bool);
 
@@ -47,10 +47,13 @@ int main(void) {
 	string first_str, second_str;
 	string first_display, second_display, result_display;
 	vector<int> first, second, result;
+	bool valid_string;
 
 	cout << "Please enter two integers:" << endl;
 	cin >> first_str;
 	cin >> second_str;
+
+    
 
 	try {
 		first = stringToVector(first_str);
@@ -88,6 +91,17 @@ char digitToChar(int digit) {
 	else {
 		throw invalid_argument("Cannot make char from non-digit integer");
 	}
+}
+
+bool verify_string(string str) {
+	bool valid = true;
+	int i = 0;
+	while (valid && i < str.length()) {
+		int code = str.at(i);
+		valid = (code >= 48 && code <= 57);
+		i++;
+	}
+	return valid;
 }
 
 vector<int> stringToVector(string str) {
