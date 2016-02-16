@@ -41,23 +41,25 @@ bool verify_string(string);
 // verify that a string contains an unsigned integer
 // 2-16 still need
 
+vector<string> get_strings(int);
+// get a number of integer strings
+
 void pause_237(bool);
 
 int main(void) {
-	string first_str, second_str;
+	vector<string> strings;
 	string first_display, second_display, result_display;
 	vector<int> first, second, result;
 	bool valid_string;
 
-	cout << "Please enter two integers:" << endl;
-	cin >> first_str;
-	cin >> second_str;
+	// read and verify strings
+	strings = get_strings(2);
 
     
 
 	try {
-		first = stringToVector(first_str);
-		second = stringToVector(second_str);
+		first = stringToVector(strings[0]);
+		second = stringToVector(strings[1]);
 	}
 	catch (invalid_argument& ia) {
 		cout << "Invalid entries!" << endl;
@@ -131,6 +133,27 @@ string vectorToString(const vector<int> &first) {
 		}
 	}
 	return result;
+}
+
+vector<string> get_strings(int num) {
+	string input;
+	vector<string> strings;
+
+	cout << "Please enter " << num << " positive integer(s):\n";
+	int i = 0;
+	while (i < num) {
+		cout << "Integer " << i + 1;
+		cin >> input;
+		if (verify_string(input)) {
+			i++;
+			strings.push_back(input);
+		}
+		else {
+			cout << "Not a valid integer!" << endl;
+			pause_237(true);
+		}
+	}
+    return strings;	
 }
 
 void pause_237(bool have_newline)
