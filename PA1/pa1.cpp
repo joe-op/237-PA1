@@ -18,7 +18,7 @@ int charToDigit(char);
 // convert a char between '0' and '9' to digit
 // return -1 if char is not valid
 
-char digitToChar(int);//jens
+char digitToChar(int);
 // convert an int between 0 and 9 to char
 
 vector<int> stringToVector(string);
@@ -36,6 +36,10 @@ vector<int> add(const vector<int> &first, const vector<int> &second);
  * so addition will be performed on the first elements, then the second elements,
  * etc. with ones carried to the next element
  */
+
+vector<int> add_overflow(vector<int> &result, const vector<int> &addend, int carry);
+// subroutine for add to be used when one vector is shorter than the other
+// will not carry digit if vectors are the same length
 
 bool verify_string(string);
 // verify that a string contains an unsigned integer
@@ -67,7 +71,14 @@ int main(void) {
 		exit(1);
 	}
 
-	// TODO if strings are valid, add them
+	result = add(first, second);
+	first_display = vectorToString(first);
+	second_display = vectorToString(second);
+	result_display = vectorToString(result);
+
+	cout << first_display << " + " << second_display << " = " << result_display << endl;
+
+	pause_237(true);
 
 	// TODO print equation
 	return 0;
@@ -142,7 +153,7 @@ vector<string> get_strings(int num) {
 	cout << "Please enter " << num << " positive integer(s):\n";
 	int i = 0;
 	while (i < num) {
-		cout << "Integer " << i + 1;
+		cout << "Integer " << i + 1 << ": ";
 		cin >> input;
 		if (verify_string(input)) {
 			i++;
@@ -154,6 +165,59 @@ vector<string> get_strings(int num) {
 		}
 	}
     return strings;	
+}
+
+
+vector<int> add(const vector<int> &first, const vector<int> &second) {
+	vector<int> result;
+	int	carry, min, sum;
+	carry = 0;
+	min = (first.size() > second.size()) ? second.size() : first.size();
+	for (int i = 0; i < min; i++) {
+		sum = first[i] + second[i] + carry;
+		carry = 0;
+		if (sum > 9) {
+			sum = sum - 10;
+			carry = 1;
+		}
+		result.push_back(sum);
+	}
+	if (first.size() > second.size()) {
+		result = add_overflow(result, first, carry);
+	}
+	else if (second.size() > first.size()) {
+		result = add_overflow(result, second, carry);
+	}
+	else if (carry == 1) {
+		result.push_back(1);
+	}
+	return result;
+}
+
+vector<int> add_overflow(vector<int> &result, const vector<int> &addend, int carry) {
+	int i = result.size();
+	while (carry == 1) {
+		int sum = 1 + addend[i];
+		if (sum > 9) {
+			sum = sum - 10;
+		}
+		else {
+			carry = 0;
+		}
+		result.push_back(sum);
+		i++;
+		if (i = addend.size()) {
+			if (carry == 1) {
+				result.push_back(1);
+			}
+			carry = 0;
+		}
+	}
+	while (i < addend.size()) {
+		result.push_back(addend[i]);
+		i++;
+	}
+	return result;
 }
 
 void pause_237(bool have_newline)
