@@ -14,39 +14,34 @@
 #include <string>
 using namespace std;
 
-int charToDigit(char);
 // convert a char between '0' and '9' to digit
 // return -1 if char is not valid
+int charToDigit(char);
 
-char digitToChar(int);
 // convert an int between 0 and 9 to char
+char digitToChar(int);
 
-vector<int> stringToVector(string);
 // convert a string of digits into a vector of integers
 // integers will be stored in reverse: <1s, 10s, 100s, ...>
+vector<int> stringToVector(string);
 
-string vectorToString(const vector<int> &first);
 // convert vector to a string of its integer
+string vectorToString(const vector<int> &first);
 
-vector<int> add(const vector<int> &first, const vector<int> &second);
-/* 
- * add two vectors and return the result.
- * vectors and the result must contain only integers between 0 and 9
- * vectors are interpreted as numbers in reverse; e.g. <3, 4, 8, 2> <=> 2843,
- * so addition will be performed on the first elements, then the second elements,
- * etc. with ones carried to the next element
- */
+/*
+* add two vectors and return the result.
+* vectors and the result must contain only integers between 0 and 9
+* vectors are interpreted as numbers in reverse; e.g. <3, 4, 8, 2> <=> 2843,
+* so addition will be performed on the first elements, then the second elements,
+* etc. with ones carried to the next element
+*/
+vector<int> add(vector<int> &first, vector<int> &second);
 
-vector<int> add_overflow(vector<int> &result, const vector<int> &addend, int carry);
-// subroutine for add to be used when one vector is shorter than the other
-// will not carry digit if vectors are the same length
-
-bool verify_string(string);
 // verify that a string contains an unsigned integer
-// 2-16 still need
+bool verify_string(string);
 
-vector<string> get_strings(int);
 // get a number of integer strings
+vector<string> get_strings(int);
 
 void pause_237(bool);
 
@@ -54,7 +49,6 @@ int main(void) {
 	vector<string> strings;
 	string first_display, second_display, result_display;
 	vector<int> first, second, result;
-	bool valid_string;
 
 	// read and verify strings
 	strings = get_strings(2);
@@ -66,7 +60,7 @@ int main(void) {
 		second = stringToVector(strings[1]);
 	}
 	catch (invalid_argument& ia) {
-		cout << "Invalid entries!" << endl;
+		cout << "Invalid entries!" << endl << ia.what() << endl;
 		pause_237(true);
 		exit(1);
 	}
@@ -80,12 +74,12 @@ int main(void) {
 
 	pause_237(true);
 
-	// TODO print equation
+	
 	return 0;
 
 }
 
-// TODO define functions
+
 
 int charToDigit(char c) {
 	int code = c;
@@ -108,7 +102,7 @@ char digitToChar(int digit) {
 
 bool verify_string(string str) {
 	bool valid = true;
-	int i = 0;
+	unsigned int i = 0;
 	while (valid && i < str.length()) {
 		int code = str.at(i);
 		valid = (code >= 48 && code <= 57);
@@ -168,13 +162,28 @@ vector<string> get_strings(int num) {
 }
 
 
-vector<int> add(const vector<int> &first, const vector<int> &second) {
+vector<int> add(vector<int> &first, vector<int> &second) {
 	vector<int> result;
-	int	carry, min, sum;
+	int	carry, max, min, sum;
+	vector<int> *largePtr, *smallPtr;
+	if (first.size() > second.size()) {
+		largePtr = &first;
+		smallPtr = &second;
+	}
+	else {
+		largePtr = &second;
+		smallPtr = &first;
+	}
 	carry = 0;
-	min = (first.size() > second.size()) ? second.size() : first.size();
-	for (int i = 0; i < min; i++) {
-		sum = first[i] + second[i] + carry;
+	max = (*largePtr).size();
+	min = (*smallPtr).size();
+	for (int i = 0; i < max; i++) {
+		if (i < min) {
+			sum = first[i] + second[i] + carry;
+		}
+		else {
+			sum = (*largePtr)[i] + carry;
+		}
 		carry = 0;
 		if (sum > 9) {
 			sum = sum - 10;
@@ -182,41 +191,9 @@ vector<int> add(const vector<int> &first, const vector<int> &second) {
 		}
 		result.push_back(sum);
 	}
-	if (first.size() > second.size()) {
-		result = add_overflow(result, first, carry);
-	}
-	else if (second.size() > first.size()) {
-		result = add_overflow(result, second, carry);
-	}
-	else if (carry == 1) {
+	if (carry == 1)
 		result.push_back(1);
-	}
-	return result;
-}
 
-vector<int> add_overflow(vector<int> &result, const vector<int> &addend, int carry) {
-	int i = result.size();
-	while (carry == 1) {
-		int sum = 1 + addend[i];
-		if (sum > 9) {
-			sum = sum - 10;
-		}
-		else {
-			carry = 0;
-		}
-		result.push_back(sum);
-		i++;
-		if (i = addend.size()) {
-			if (carry == 1) {
-				result.push_back(1);
-			}
-			carry = 0;
-		}
-	}
-	while (i < addend.size()) {
-		result.push_back(addend[i]);
-		i++;
-	}
 	return result;
 }
 
