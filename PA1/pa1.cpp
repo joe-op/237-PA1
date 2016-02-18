@@ -7,6 +7,9 @@
  * Convert the integers to vectors and add them.
  * Convert all three integers back to strings and
  * display the equation.
+ *
+ * Includes bonus subtraction of integers.
+ *
  */
 
 #include <iostream>
