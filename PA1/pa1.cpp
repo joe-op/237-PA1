@@ -35,7 +35,7 @@ string vectorToString(const vector<int> &first);
 * so addition will be performed on the first elements, then the second elements,
 * etc. with ones carried to the next element
 */
-vector<int> add(vector<int> &first, vector<int> &second);
+vector<int> add(const vector<int> &first, const vector<int> &second);
 
 // verify that a string contains an unsigned integer
 bool verify_string(string);
@@ -162,10 +162,10 @@ vector<string> get_strings(int num) {
 }
 
 
-vector<int> add(vector<int> &first, vector<int> &second) {
+vector<int> add(const vector<int> &first, const vector<int> &second) {
 	vector<int> result;
 	int	carry, max, min, sum;
-	vector<int> *largePtr, *smallPtr;
+	const vector<int> *largePtr, *smallPtr;
 	if (first.size() > second.size()) {
 		largePtr = &first;
 		smallPtr = &second;
