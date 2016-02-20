@@ -195,7 +195,7 @@ vector<string> get_strings(int num) {
 
 void remove_zeroes(vector<int> &num) {
 	int i = num.size() - 1;
-	while (i >= 0 && num[i] == 0) {
+	while (i > 0 && num[i] == 0) {
 		num.pop_back();
 	    i--;
 	}
