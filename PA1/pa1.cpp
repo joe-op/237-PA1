@@ -154,6 +154,7 @@ vector<int> stringToVector(string str) {
 			result.push_back(digit);
 		}
 	}
+	remove_zeroes(result);
 	return result;
 }
 
@@ -187,7 +188,6 @@ vector<string> get_strings(int num) {
 		}
 		else {
 			cout << "Not a valid integer!" << endl;
-			pause_237(true);
 		}
 	}
     return strings;	

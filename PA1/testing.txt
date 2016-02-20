@@ -1,0 +1,157 @@
+// 1
+Please enter 2 positive integer(s):
+Integer 1: 8
+Integer 2: 0
+8 + 0 = 8
+8 - 0 = 8
+
+Press ENTER to continue.
+// 2
+Please enter 2 positive integer(s):
+Integer 1: 1891653751681452
+Integer 2: 77474114698412345
+1891653751681452 + 77474114698412345 = 79365768450093797
+1891653751681452 - 77474114698412345 = -75582460946730893
+
+Press ENTER to continue.
+// 3
+Please enter 2 positive integer(s):
+Integer 1: 815672
+Integer 2: 914234
+815672 + 914234 = 1729906
+815672 - 914234 = -98562
+
+Press ENTER to continue.
+// 4
+Please enter 2 positive integer(s):
+Integer 1: 910004
+Integer 2: 310002
+910004 + 310002 = 1220006
+910004 - 310002 = 600002
+
+Press ENTER to continue.
+// 5
+Please enter 2 positive integer(s):
+Integer 1: 610
+Integer 2: 223
+610 + 223 = 833
+610 - 223 = 387
+
+Press ENTER to continue.
+// 6
+Please enter 2 positive integer(s):
+Integer 1: 1009
+Integer 2: 2119
+1009 + 2119 = 3128
+1009 - 2119 = -1110
+
+Press ENTER to continue.
+// 7
+Please enter 2 positive integer(s):
+Integer 1: 3
+Integer 2: 98
+3 + 98 = 101
+3 - 98 = -95
+
+Press ENTER to continue.
+// 8
+Please enter 2 positive integer(s):
+Integer 1: 987
+Integer 2: 116
+987 + 116 = 1103
+987 - 116 = 871
+
+Press ENTER to continue.
+// 9
+Please enter 2 positive integer(s):
+Integer 1: 0594671354698
+Integer 2: 45173459194674
+0594671354698 + 45173459194674 = 45768130549372
+0594671354698 - 45173459194674 = -44578787839976
+
+Press ENTER to continue.
+// 10 (2/20 modified remove_zeroes to not remove the last zero. Otherwise subtraction output is empty.)
+Please enter 2 positive integer(s):
+Integer 1: 123abc
+Not a valid integer!
+
+Press ENTER to continue.
+
+Integer 1: 123
+Integer 2: abc
+Not a valid integer!
+
+Press ENTER to continue.
+
+Integer 2: 123
+123 + 123 = 246
+123 - 123 = 0
+
+Press ENTER to continue.
+// 11
+Please enter 2 positive integer(s):
+Integer 1: 100
+Integer 2: 10.1
+Not a valid integer!
+
+Press ENTER to continue.
+
+Integer 2: 101
+100 + 101 = 201
+100 - 101 = -1
+
+Press ENTER to continue.
+// 12
+Please enter 2 positive integer(s):
+Integer 1: -34
+Not a valid integer!
+
+Press ENTER to continue.
+
+Integer 1: 34
+Integer 2: 10066
+34 + 10066 = 10100
+34 - 10066 = -10032
+
+Press ENTER to continue.
+// 13 (2/20 modified stringToVector to use remove_zeroes. Otherwise leading zeroes remain in everything but the difference.)
+Please enter 2 positive integer(s):
+Integer 1: 0000001
+Integer 2: 0000002.1
+Not a valid integer!
+
+Press ENTER to continue.
+
+Integer 2: 0000002
+1 + 2 = 3
+1 - 2 = -1
+
+Press ENTER to continue.
+// 14
+Please enter 2 positive integer(s):
+Integer 1:
+five
+Not a valid integer!
+
+Press ENTER to continue.
+
+Integer 1: 5
+Integer 2: 10
+5 + 10 = 15
+5 - 10 = -5
+
+Press ENTER to continue.
+// 15
+Please enter 2 positive integer(s):
+Integer 1: 126549873643l1
+Not a valid integer!
+
+Press ENTER to continue.
+
+Integer 1: 12654987364311
+Integer 2: 010134850002
+12654987364311 + 10134850002 = 12665122214313
+12654987364311 - 10134850002 = 12644852514309
+
+Press ENTER to continue.
+
